@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./src/output.css" rel="stylesheet" />
+    <title>Notation Interactive</title>
+    <script>
+        let selectedRating = 0;
+        
+        function selectRating(rating) {
+            selectedRating = rating;
+            
+            // Remove focus/selection from all rating elements
+            const ratingElements = document.querySelectorAll('.rating-option');
+            ratingElements.forEach(elem => {
+                elem.classList.remove('bg-white');
+                elem.classList.remove('text-black');
+                elem.classList.add('bg-gray-700');
+            });
+            
+            
+        }
+        
+        function submitRating() {
+            if (selectedRating > 0) {
+                // Store the selected rating in localStorage
+                localStorage.setItem('selectedRating', selectedRating);
+                // Navigate to the result page
+                window.location.href = 'thank-you.html';
+            } else {
+                alert('Veuillez sélectionner une note avant d\'envoyer.');
+            }
+        }
+    </script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-900">
+    <div class="max-w-xs w-full p-6 bg-gray-800 rounded-lg shadow-lg text-white">
+        <div class="flex flex-col items-start mb-4">
+            <span class="text-yellow-400 mb-4">★</span>
+            <span class="text-xl font-semibold">Donner votre avis !</span>
+        </div>
+        <p class="mb-4 text-sm">
+            N'hésitez pas à nous faire part de votre avis. Tous les commentaires
+            sont les bienvenus pour nous aider à améliorer notre outil !
+        </p>
+        <div class="flex items-center justify-center mb-4">
+            <div class="flex items-center space-x-2">
+                <span id="rating-1" onclick="selectRating(1)" tabindex="0" class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-[#D5906A] focus:outline-none focus:bg-white focus:text-black cursor-pointer">1</span>
+                <span id="rating-2" onclick="selectRating(2)" tabindex="0" class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-[#D5906A] focus:outline-none cursor-pointer">2</span>
+                <span id="rating-3" onclick="selectRating(3)" tabindex="0" class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-[#D5906A] focus:outline-none cursor-pointer">3</span>
+                <span id="rating-4" onclick="selectRating(4)" tabindex="0" class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-[#D5906A] focus:outline-none cursor-pointer">4</span>
+                <span id="rating-5" onclick="selectRating(5)" tabindex="0" class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-[#D5906A] focus:outline-none cursor-pointer">5</span>
+            </div>
+        </div>
+        <button onclick="submitRating()" class="w-full py-2 bg-yellow-500 text-gray-800 font-semibold rounded-lg hover:bg-yellow-700 focus:text-white cursor-pointer">
+            Envoyer
+        </button>
+    </div>
+</body>
+</html>
