@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./src/output.css" rel="stylesheet" />
     <title>Résultat de la Notation</title>
-    <script>
-        // When the page loads, get the selected rating from localStorage
-        window.onload = function() {
-            const rating = localStorage.getItem('selectedRating');
-            if (rating) {
-                document.getElementById('rating-display').textContent = rating;
-            }
-        }
-    </script>
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gray-900">
     <div class="max-w-xs w-full p-6 bg-gray-800 rounded-lg shadow-lg text-white">
@@ -23,8 +14,8 @@
                 <!-- Remplacez le src par le chemin vers votre image -->
                 <img id="product-image" src="/img/thk-img.svg" alt="Image du produit" class="max-w-full max-h-full object-cover" />
             </div>
-            <p class="text-center mb-4">
-                Vous avez sélectionné la note: <span id="rating-display" class="text-3xl font-bold text-yellow-400"></span>
+            <p class="bg-gray-700 p-2 px-6  text-center mb-4 rounded-full text-orange-400">
+                Vous avez sélectionné <span id="rating-display" class="text-orange-400"></span> sur 5
             </p>
             <span class="text-xl font-semibold mb-2">Merci !</span>
 
@@ -33,9 +24,12 @@
             </p>
 
         </div>
-        <a href="index.html" class="block w-full py-2 bg-yellow-500 text-gray-800 font-semibold rounded-lg text-center mt-6">
+        <a href="index.html" class="block w-full py-2 bg-orange-600 text-white font-semibold rounded-lg text-center mt-6">
             Retour
         </a>
     </div>
+
+    <script src="/thank-you.js"></script>
+
 </body>
 </html
