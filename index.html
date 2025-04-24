@@ -3,66 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./src/output.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Notation Interactive</title>
   </head>
-  <body class="flex items-center justify-center min-h-screen bg-gray-900">
-    <div class="max-w-xs w-full p-6 bg-gray-800 rounded-lg shadow-lg text-white">
-      <div class="flex flex-col items-start mb-4">
-        <span class="text-orange-400 mb-4">★</span>
-        <span class="text-xl font-semibold">Donner votre avis !</span>
-      </div>
-      <p class="mb-4 text-sm">
-        N'hésitez pas à nous faire part de votre avis. Tous les commentaires
-        sont les bienvenus pour nous aider à améliorer notre outil !
-      </p>
-      <div class="flex items-center justify-center mb-4">
-        <div class="flex items-center space-x-2">
-          <span
-            id="rating-1"
-            onclick="selectRating(1)"
-            tabindex="0"
-            class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-orange-700 focus:outline-none cursor-pointer"
-            >1</span
+  <body class="flex items-center justify-center min-h-screen bg-gray-900 font-family: 'Overpass', sans-serif;">
+    <main>
+      <div class="flex flex-col items-center space-y-2">
+        <!-- Notation Section -->
+        <div
+          id="notation-section"
+          class="max-w-[400px] w-full p-6 bg-gray-800 rounded-lg shadow-lg text-white"
+        >
+          <div class="flex flex-col items-start mb-4">
+            <i class="fa-solid fa-star fa-lg text-[#FB7413] mb-6"></i>
+            <span class="text-xl font-semibold">Donner votre avis !</span>
+          </div>
+          <p class="mb-4 text-sm">
+            N'hésitez pas à nous faire part de votre avis. Tous les commentaires
+            sont les bienvenus pour nous aider à améliorer notre outil !
+          </p>
+          <div class="flex items-center justify-center mb-4">
+            <div class="flex items-center space-x-2">
+              <span
+                class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-[#FB7413] cursor-pointer"
+                >1</span
+              >
+              <span
+                class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-[#FB7413] cursor-pointer"
+                >2</span
+              >
+              <span
+                class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-[#FB7413] cursor-pointer"
+                >3</span
+              >
+              <span
+                class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-[#FB7413] cursor-pointer"
+                >4</span
+              >
+              <span
+                class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-[#FB7413] cursor-pointer"
+                >5</span
+              >
+            </div>
+          </div>
+          <button
+            class="w-full py-2 bg-[#FB7413] text-white font-semibold rounded-[2rem] hover:bg-[#FB7480] cursor-pointer"
           >
-          <span
-            id="rating-2"
-            onclick="selectRating(2)"
-            tabindex="0"
-            class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-orange-700 focus:outline-none cursor-pointer"
-            >2</span
-          >
-          <span
-            id="rating-3"
-            onclick="selectRating(3)"
-            tabindex="0"
-            class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-orange-700 focus:outline-none cursor-pointer"
-            >3</span
-          >
-          <span
-            id="rating-4"
-            onclick="selectRating(4)"
-            tabindex="0"
-            class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-orange-700 focus:outline-none cursor-pointer"
-            >4</span
-          >
-          <span
-            id="rating-5"
-            onclick="selectRating(5)"
-            tabindex="0"
-            class="rating-option w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-white hover:bg-orange-700 focus:outline-none cursor-pointer"
-            >5</span
-          >
+            Envoyer
+          </button>
         </div>
-      </div>
-      <button
-        onclick="submitRating()"
-        class="w-full py-2 bg-orange-700 text-gray-800 font-semibold rounded-lg hover:bg-yellow-900 focus:text-white cursor-pointer"
-      >
-        Envoyer
-      </button>
-    </div>
 
-    <script src="/script.js"></script>
+        <!-- Résultat Section -->
+        <div
+          id="result-section"
+          class="max-w-[600px] w-full p-6 bg-gray-800 rounded-lg shadow-lg text-white"
+        >
+          <div class="flex flex-col items-center mb-4">
+            <div
+              class="w-32 h-32 rounded-lg mb-4 flex items-center justify-center overflow-hidden"
+            >
+              <img
+                src="/img/thk-img.svg"
+                alt="Image du produit"
+                class="max-w-full max-h-full object-cover"
+              />
+            </div>
+            <p
+              class="bg-gray-700 p-2 px-6 text-center mb-4 rounded-full text-[#FB7413]"
+            >
+              Vous avez sélectionné
+              <span class="text-[#FB7413]" id="rating-display">[Note]</span> sur
+              5
+            </p>
+            <span class="text-xl font-semibold mb-2">Merci !</span>
+            <p class="text-center w-[400px]">
+              Nous vous remercions d'avoir pris le temps d'attribuer une note à
+              notre produit. Si vous avez besoin de plus de soutien, n'hésitez
+              pas à nous contacter !
+            </p>
+          </div>
+        </div>
+        <footer>
+          <!-- Footer message centered below both cards -->
+          <p class="text-center text-sm text-gray-400">
+            Créé par <span class="text-[#FB7413]">Eric</span>
+          </p>
+        </footer>
+      </div>
+    </main>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+
+    <script
+      src="https://kit.fontawesome.com/78d2cda858.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

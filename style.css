@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
-
 body {
-    font-family: Arial, sans-serif;
+    font-family: Overpass;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
